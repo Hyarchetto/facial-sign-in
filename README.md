@@ -102,9 +102,13 @@ python signin_app.py
 赵六
 ```
 
+---
+
 ## ⚙️ 技术依赖
 
 详见 [`requirements.txt`](requirements.txt)
+
+---
 
 ## ⚠️ 注意事项
 
@@ -115,6 +119,8 @@ python signin_app.py
 - 中文字体依赖系统字体（Windows 默认支持 `simhei.ttf` / `msyh.ttc`）
 - 本项目不上传人脸图像和特征数据库，符合隐私保护原则
 - 如需支持更多中文系统，请在 get_chinese_font() 中扩展字体路径
+
+---
 
 ## 📅 最后更新
 - 2025年12月
