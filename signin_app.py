@@ -147,7 +147,7 @@ def main():
         draw = ImageDraw.Draw(pil_img)
 
         for (x1, y1, x2, y2, name) in current_faces:
-            # ✅ 正确的颜色逻辑
+
             if name == "识别失败":
                 color = (255, 0, 0)      # 红色
             elif name == "请取下口罩":
@@ -161,7 +161,7 @@ def main():
 
         # 显示短暂的签到成功提示
         if time.time() - last_signin_time < 1.0 and last_signin_msg:
-            draw.text((50, 50), last_signin_msg, fill=(0, 255, 0), font=CHINESE_FONT)
+            draw.text((20, 20), last_signin_msg, fill=(0, 255, 0), font=CHINESE_FONT)
 
         frame = cv2.cvtColor(np.array(pil_img), cv2.COLOR_RGB2BGR)
         cv2.imshow("Face Sign-in System", frame)

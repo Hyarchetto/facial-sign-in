@@ -1,16 +1,15 @@
 import torch
-from facenet_pytorch import MTCNN, InceptionResnetV1
 from PIL import Image
-import numpy as np
+from facenet_pytorch import MTCNN, InceptionResnetV1
 
 device = 'cpu'  # 如果你有 GPU 且装了 CUDA，可改为 'cuda'
 
-# 初始化模型（只加载一次）
+# 初始化模型
 mtcnn = MTCNN(
     image_size=160,
     margin=10,
     min_face_size=20,
-    thresholds=[0.6, 0.8, 0.8],
+    thresholds=[0.7, 0.8, 0.8],
     factor=0.709,
     post_process=True,
     device=device

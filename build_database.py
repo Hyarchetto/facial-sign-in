@@ -5,7 +5,7 @@ from utils.face_utils import extract_embedding
 DATASET_DIR = 'dataset'
 EMBEDDINGS_DIR = 'embeddings'
 
-# 确保 embeddings 目录存在（关键：这行已经足够！）
+# 确保 embeddings 目录存在
 os.makedirs(EMBEDDINGS_DIR, exist_ok=True)
 
 def build_database():
