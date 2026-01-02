@@ -214,3 +214,11 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+
+__pycache__/
+*.pyc
+embeddings/database.npz    # 含隐私特征，不上传
+dataset/                   # 学生照片，不上传
+Signin-record/             # 动态生成记录，不上传
+.env

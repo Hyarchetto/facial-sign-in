@@ -23,26 +23,49 @@
 - ✅ 已签到学生名单  
 - ❌ 未签到学生名单（对比 `dataset/` 中所有注册学生）
 
-⚙️ **模块化设计**  
-主程序、数据库构建、工具函数分离，便于维护与扩展
+⚙️ **清晰的模块化架构**  
+- `app/`：用户交互与主循环  
+- `core/`：核心 AI 逻辑（识别 + 口罩检测）  
+- `recorder/`：签到结果持久化  
+- `utils/`：通用工具（模型加载、图像处理）  
+- 高内聚低耦合，便于测试与扩展
 
 ---
 ## 📂 项目结构
 ```
 face-signin/
-├── dataset/                # 【需手动准备】原始人脸图像（按姓名建子文件夹）
-├── embeddings/             # 自动生成的人脸特征数据库
+├── dataset/                    # 【需手动准备】原始人脸图像（按姓名建子文件夹）
+├── embeddings/                 # 自动生成的人脸特征数据库
 │ └── database.npz
-├── mask_model/             # 口罩检测模型
+├── mask_model/                 # 口罩检测模型
 │ └── mask_detector.model
-├── utils/
-│ └── face_utils.py         # MTCNN + ResNet 模型加载与人脸嵌入提取
-├── build_database.py       # 构建人脸特征数据库
-├── signin_app.py           # 主签到程序（含日志与口罩检测）
-├── requirements.txt        # Python 依赖包列表
+├── Signin-record/              # 自动生成的签到记录（程序退出后生成）
+│
+├── app/                        # 主应用程序入口
+│ ├── __init__.py               # 包初始化文件
+│ └── signin_app.py             # 启动签到系统
+│
+├── core/                       # 核心识别与检测逻辑
+│ ├── __init__.py  
+│ ├── face_recognizer.py        # 人脸识别器（加载 embeddings）
+│ └── mask_detector.py          # 口罩检测器（加载 mask_model）
+│
+├── recorder/                   # 签到记录管理
+│ ├── __init__.py  
+│ └── record_saver.py           # 保存签到/未签到名单
+│
+├── utils/                      # 工具函数
+│ ├── __init__.py  
+│ ├── face_utils.py             # MTCNN + ResNet 模型加载与嵌入提取
+│ └── font_utils.py             # 中文字体处理（支持中文显示）
+│
+├── build_database.py           # 构建人脸特征数据库（位于项目根目录）
+├── requirements.txt            # Python 依赖包列表
 ├── .gitignore
-└── README.md               # 本说明文件
+└── README.md                   # 本说明文件
 ```
+
+> ✅ 所有子目录均包含 `__init__.py`，支持标准 Python 包导入。
 
 ---
 
@@ -88,7 +111,8 @@ python build_database.py
  ### 4. 启动签到系统
 
 ```bash
-python signin_app.py
+# 确保你在项目根目录（face-signin/）下执行
+python -m app.signin_app
 ```
 
 - 摄像头画面实时检测人脸
