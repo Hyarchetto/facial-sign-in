@@ -1,6 +1,5 @@
 import os
 import numpy as np
-from utils.face_utils import mtcnn, resnet, device
 from utils.face_utils import extract_embedding
 
 DATASET_DIR = 'dataset'

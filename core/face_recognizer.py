@@ -1,7 +1,6 @@
 from pathlib import Path
 import numpy as np
 import torch
-
 from utils.face_utils import resnet, device
 
 

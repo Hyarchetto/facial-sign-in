@@ -171,7 +171,7 @@ python -m app.signin_app
 > Permission is hereby granted, free of charge, to any person obtaining a copy  
 > of this software and associated documentation files...
 
-本仓库已包含该模型文件，可直接使用。
+已包含该模型文件，可直接使用。
 原始项目使用 MobileNetV2 架构训练，基于真实戴口罩人脸图像，准确率约 98%。  
 感谢作者的贡献！
 
